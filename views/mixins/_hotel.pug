@@ -1,13 +1,17 @@
-mixin hotel
+mixin hotel(hotel)
 
   .hotel
     .hotel_img
-      a(href='')
-        img(src='/images/hotels/hotel1.jpg')
+      a(href=`/all/${hotel._id}`)
+        //- img(src=`/images/hotels/${hotel.image}`)
+        img(src=`http://res.cloudinary.com/diym1ymrk/image/upload/${hotel.image}.jpg`)
     .hotel_info
-        a(href='')
-         h3 Hotel 1
+        a(href=`/all/${hotel._id}`)
+          h3= hotel.hotel_name
         hr
-        p Start rating:4
-        p country:Japan
-        p Cost per night: 56
+        if url.startsWith('/all/')
+          p=hotel.hotel_description
+          hr
+        p= `Start rating:${hotel.star_rating}`
+        p= `country:${hotel.country}`
+        p= `Cost per night: ${hotel.cost_per_night}`

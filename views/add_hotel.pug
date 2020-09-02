@@ -1,33 +1,9 @@
 extend layout
+include mixins/_hotel_form
 
 block content
   a(href="/admin")
     button(type='button' class='button_small') Back to admin
   h2= title
+  +hotelForm(hotel)
   
-  form(action="" method="POST")
-    .form_input
-      label(for="hotel_name") Hotel Name:
-      input(type='text' name="hotel_name" required)
-    .form_input
-      label(for="hotel_description") Hotel description:
-      input(type='text' name="hotel_description" id="hotel_description" cols="30" rows="10" required)
-    .form_input
-      label(for="image") Hotel image:
-      input(type='file' name="image"  id="image")
-    .form_input
-      label(for="star_rating") Hotel star rating:
-      input(type='text' name="star_rating"  min="1" max="5" required)
-    .form_input
-      label(for="country") Country:
-      input(type='text' name="country"  id="country" required)
-    .form_input
-      label(for="cost_per_night") Cost per night:
-      input(type='number' name="cost_per_night"  id="cost_per_night" required)
-    .form_input
-      label(for="available") Available:
-      input(type='radio' name="available"  id="available" value="true" checked)
-      label(for="unavailable") Available:
-      input(type='radio' name="unavailable"  id="unavailable" value="false")
-    .form_input
-      button(type="submit" class="button_small") Confirm

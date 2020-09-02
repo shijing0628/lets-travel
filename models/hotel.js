@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 
 const hotelSchema = new mongoose.Schema({
     hotel_name: {
-        type: string,
+        type: String,
         required: "hotel name is required",
         max: 32,
         trim: true
     },
     hotel_description: {
-        type: string,
+        type: String,
         required: "hotel description is required",
         trim: true
     },
@@ -19,7 +19,7 @@ const hotelSchema = new mongoose.Schema({
         max: 5
     },
     country: {
-        type: string,
+        type: String,
         required: "country description is required",
         trim: true
     },
@@ -33,6 +33,10 @@ const hotelSchema = new mongoose.Schema({
     }
 
 });
+hotelSchema.index({
+    hotel_name: "text",
+    country: "text",
 
+})
 //export modal
 module.exports = mongoose.model('Hotels', hotelSchema)
